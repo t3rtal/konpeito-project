@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tertal.konpeito.dto.ApplicationFilterDto;
 import com.tertal.konpeito.model.Application;
 import com.tertal.konpeito.repository.ApplicationRepo;
 
@@ -14,8 +15,8 @@ public class ApplicationService {
     @Autowired
     ApplicationRepo repo;
 
-    public List<Application> getAllApplications() {
-        return this.repo.findAll();
+    public List<Application> getApplications(ApplicationFilterDto filter) {
+        return this.repo.findApplications(filter.getPosition(), filter.getStatus());
     }
 
     public Application getApplication(int id) {
@@ -32,18 +33,6 @@ public class ApplicationService {
 
     public void deleteApplication(int id) {
         this.repo.deleteById(id);
-    }
-
-    public List<Application> getApplicationsByStatus(Application.Status status) {
-        return this.repo.findByStatus(status);
-    }
-
-    public List<Application> getApplicationsByPosition(String position) {
-        return this.repo.findByPosition(position);
-    }
-
-    public List<Application> getApplicationsByStatusAndPosition(Application.Status status, String position) {
-        return this.repo.findByStatusAndPosition(status, position);
     }
 
 }

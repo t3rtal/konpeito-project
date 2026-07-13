@@ -8,14 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tertal.konpeito.dto.ApplicationFilterDto;
 import com.tertal.konpeito.model.Application;
 import com.tertal.konpeito.service.ApplicationService;
 
@@ -34,27 +35,9 @@ public class ApplicationController {
 
     @GetMapping("/applications")
     public ResponseEntity<List<Application>> getApplications(
-            @RequestParam(required = false) Application.Status status,
-            @RequestParam(required = false) String position
+            @ModelAttribute ApplicationFilterDto filter
     ) {
-        List<Application> applications;
-
-        if (status == null && position == null) {
-            applications = this.service.getAllApplications();
-            return new ResponseEntity<>(applications, HttpStatus.OK);
-        }
-
-        if (status == null) {
-            applications = this.service.getApplicationsByPosition(position);
-            return new ResponseEntity<>(applications, HttpStatus.OK);
-        }
-
-        if (position == null) {
-            applications = this.service.getApplicationsByStatus(status);
-            return new ResponseEntity<>(applications, HttpStatus.OK);
-        }
-
-        applications = this.service.getApplicationsByStatusAndPosition(status, position);
+        List<Application> applications = this.service.getApplications(filter);
         return new ResponseEntity<>(applications, HttpStatus.OK);
     }
 
