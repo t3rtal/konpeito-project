@@ -34,4 +34,16 @@ public class ApplicationService {
         this.repo.deleteById(id);
     }
 
+    public List<Application> getApplicationsByStatus(Application.Status status) {
+        return this.repo.findByStatus(status);
+    }
+
+    public List<Application> getApplicationsByPosition(String position) {
+        return this.repo.findByPosition(position);
+    }
+
+    public List<Application> getApplicationsByStatusAndPosition(Application.Status status, String position) {
+        return this.repo.findByStatusAndPosition(status, position);
+    }
+
 }

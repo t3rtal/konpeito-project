@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tertal.konpeito.model.Application;
@@ -32,8 +33,28 @@ public class ApplicationController {
     }
 
     @GetMapping("/applications")
-    public ResponseEntity<List<Application>> getAllApplications() {
-        List<Application> applications = this.service.getAllApplications();
+    public ResponseEntity<List<Application>> getApplications(
+            @RequestParam(required = false) Application.Status status,
+            @RequestParam(required = false) String position
+    ) {
+        List<Application> applications;
+
+        if (status == null && position == null) {
+            applications = this.service.getAllApplications();
+            return new ResponseEntity<>(applications, HttpStatus.OK);
+        }
+
+        if (status == null) {
+            applications = this.service.getApplicationsByPosition(position);
+            return new ResponseEntity<>(applications, HttpStatus.OK);
+        }
+
+        if (position == null) {
+            applications = this.service.getApplicationsByStatus(status);
+            return new ResponseEntity<>(applications, HttpStatus.OK);
+        }
+
+        applications = this.service.getApplicationsByStatusAndPosition(status, position);
         return new ResponseEntity<>(applications, HttpStatus.OK);
     }
 
