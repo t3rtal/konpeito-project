@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tertal.konpeito.dto.ApplicationFilterDto;
-import com.tertal.konpeito.model.Application;
-import com.tertal.konpeito.repository.ApplicationRepo;
+import com.tertal.konpeito.entity.Application;
+import com.tertal.konpeito.repository.ApplicationRepository;
 
 @Service
 public class ApplicationService {
 
     @Autowired
-    ApplicationRepo repo;
+    ApplicationRepository repo;
 
     public List<Application> getApplications(ApplicationFilterDto filter) {
         return this.repo.findApplications(filter.getPosition(), filter.getStatus());

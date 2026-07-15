@@ -1,6 +1,6 @@
 package com.tertal.konpeito.dto;
 
-import com.tertal.konpeito.model.Application;
+import com.tertal.konpeito.entity.Application;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.tertal.konpeito.model;
+package com.tertal.konpeito.entity;
 
 import java.time.LocalDate;
 

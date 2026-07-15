@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.tertal.konpeito.model.Application;
+import com.tertal.konpeito.entity.Application;
 
 @Repository
-public interface ApplicationRepo extends JpaRepository<Application, Integer> {
+public interface ApplicationRepository extends JpaRepository<Application, Integer> {
 
     @Query("""
     SELECT a
