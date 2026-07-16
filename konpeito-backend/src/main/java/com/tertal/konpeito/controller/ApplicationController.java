@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tertal.konpeito.dto.ApplicationDto;
 import com.tertal.konpeito.dto.ApplicationFilterDto;
-import com.tertal.konpeito.entity.Application;
 import com.tertal.konpeito.service.ApplicationService;
 
 @RestController
@@ -29,43 +29,45 @@ public class ApplicationController {
     ApplicationService service;
 
     @GetMapping
-    public ResponseEntity<List<Application>> getApplications(
+    public ResponseEntity<List<ApplicationDto>> getApplications(
             @ModelAttribute ApplicationFilterDto filter
     ) {
-        List<Application> applications = this.service.getApplications(filter);
-        return new ResponseEntity<>(applications, HttpStatus.OK);
+        List<ApplicationDto> applications = this.service.getApplications(filter);
+        return ResponseEntity.ok(applications);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Application> getApplication(
-            @PathVariable("id") int applicationId
+    public ResponseEntity<ApplicationDto> getApplication(
+            @PathVariable("id") Long applicationId
     ) {
-        Application application = this.service.getApplication(applicationId);
-        return new ResponseEntity<>(application, HttpStatus.OK);
+        ApplicationDto application = this.service.getApplication(applicationId);
+        return ResponseEntity.ok(application);
     }
 
     @PostMapping
-    public ResponseEntity<String> addApplication(
-            @RequestBody Application application
+    public ResponseEntity<ApplicationDto> addApplication(
+            @RequestBody ApplicationDto application
     ) {
-        this.service.addApplication(application);
-        return new ResponseEntity<>("Application added", HttpStatus.OK);
+        ApplicationDto savedApplication = this.service.addApplication(application);
+        return new ResponseEntity<>(savedApplication, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<String> updateApplication(
-            @RequestBody Application application
+    @PutMapping("/{id}")
+    public ResponseEntity<ApplicationDto> updateApplication(
+            @PathVariable("id") Long applicationId,
+            @RequestBody ApplicationDto application
     ) {
-        this.service.updateApplication(application);
-        return new ResponseEntity<>("Application updated", HttpStatus.OK);
+        ApplicationDto savedApplication = this.service.updateApplication(
+                applicationId, application);
+        return ResponseEntity.ok(savedApplication);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteApplication(
-            @PathVariable("id") int applicationId
+            @PathVariable("id") Long applicationId
     ) {
         this.service.deleteApplication(applicationId);
-        return new ResponseEntity<>("Application deleted", HttpStatus.OK);
+        return ResponseEntity.ok("Application deleted");
     }
 
 }

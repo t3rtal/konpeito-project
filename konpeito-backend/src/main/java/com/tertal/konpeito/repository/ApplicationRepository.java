@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.tertal.konpeito.entity.Application;
 
 @Repository
-public interface ApplicationRepository extends JpaRepository<Application, Integer> {
+public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
     @Query("""
     SELECT a
