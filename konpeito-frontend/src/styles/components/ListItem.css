@@ -1,0 +1,64 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #e6eef6;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(11, 22, 33, 0.04);
+  width: 100%;
+  max-width: 800px;
+  margin: 0.4rem 0;
+}
+
+.application-preview {
+  display: grid;
+  grid-template-columns: minmax(170px, 2fr) minmax(140px, 2fr) minmax(100px, 1fr);
+  gap: 1rem;
+  align-items: center;
+  font-weight: 600;
+  color: #123;
+  line-height: 1.2; /* consistent baseline for columns */
+  min-width: 0;
+}
+
+.application-preview > * {
+  display: flex;
+  align-items: center; /* ensure contents are vertically centered within each grid cell */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.application-preview > .position,
+.application-preview > .company {
+  font-size: 1rem;
+}
+
+.application-preview > .status {
+  justify-self: end;
+  text-align: right;
+  font-weight: 700;
+  color: #04529b;
+  font-size: 0.95rem;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controls button {
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #cfd8e3;
+  background: #f6fbff;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: #e7f6ff;
+}

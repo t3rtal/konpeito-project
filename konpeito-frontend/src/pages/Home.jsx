@@ -37,18 +37,15 @@ function Home() {
   return (
     <>
       <Navbar />
-      <h1>Welcome back!</h1>
-      <h2>Here is your list of applications</h2>
-      <button onClick={() => setIsOpen(true)}>add application</button>
-      {isOpen && (
-        <div className="popup">
-          <div className="popup-content">
-            <button onClick={() => setIsOpen(false)}>close form</button>
-            <InputForm onSubmit={handleAddApplication} />
-          </div>
-        </div>
-      )}
-      <ul>{listItems}</ul>
+      <div className="page-content">
+        <h1>Hi, Tertal!</h1>
+        <h2>Here is your list of applications</h2>
+        <button className="add-application" onClick={() => setIsOpen(true)}>add application</button>
+        {isOpen && (
+          <InputForm setIsOpen={setIsOpen} onSubmit={handleAddApplication} />
+        )}
+        <ul>{listItems}</ul>
+      </div>
     </>
   );
 }

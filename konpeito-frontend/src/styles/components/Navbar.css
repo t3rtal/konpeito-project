@@ -1,0 +1,30 @@
+/* Navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 2.5rem; /* match body horizontal padding */
+  background: linear-gradient(90deg, #f8fbff, #e7f6ff);
+  box-shadow: 0 1px 4px rgba(6, 24, 54, 0.04);
+  width: 100%;
+  left: 0;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar .home a,
+.navbar .explore a {
+  text-decoration: none;
+  color: #03396c;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.navbar .explore {
+  margin-left: auto;
+}
+
+.navbar .explore a {
+  color: #0353a4;
+}

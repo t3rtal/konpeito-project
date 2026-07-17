@@ -4,7 +4,9 @@ function About() {
   return (
     <>
       <Navbar />
-      <p>This is an app where you can track your application progress</p>
+      <div className="page-content">
+        This is an app where you can track your application progress
+      </div>
     </>
   );
 }

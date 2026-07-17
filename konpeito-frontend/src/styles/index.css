@@ -1,0 +1,25 @@
+@import './components/Navbar.css';
+@import './components/InputForm.css';
+@import './components/ListItem.css';
+
+:root {
+	--page-bg: #f5f7fb;
+	--text-color: #111827;
+	--muted: #6b7280;
+	--max-width: 1000px;
+}
+
+body {
+	margin: 0;
+	padding: 0.75rem 2.5rem; /* increased horizontal padding */
+	background: var(--page-bg);
+	color: var(--text-color);
+	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.app-container {
+	width: 100%;
+	max-width: var(--max-width);
+	padding: 1rem 0;
+	margin-left: 0; /* keep content aligned to left edge of page padding */
+}

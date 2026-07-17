@@ -17,9 +17,21 @@ function ListItem({ application, setServerResponse }) {
 
   return (
     <div className="list-item">
-      {application.id} {application.position} {application.company}
-      <button onClick={handleLoadPage}>view details</button>
-      <button onClick={handleRemove}>remove</button>
+      <div className="application-preview">
+        <div className="position">
+          {application.position}
+        </div>
+        <div className="company">
+          {application.company}
+        </div>
+        <div className="status">
+          {application.status}
+        </div>
+      </div>
+      <div className="controls">
+        <button onClick={handleLoadPage}>view details</button>
+        <button onClick={handleRemove}>remove</button>
+      </div>
     </div>
   );
 }

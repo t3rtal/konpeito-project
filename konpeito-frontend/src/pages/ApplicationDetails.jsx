@@ -17,9 +17,14 @@ function ApplicationDetails() {
   return (
     <>
       <Navbar />
-      <p>{application.id}</p>
-      <p>{application.company}</p>
-      <p>{application.position}</p>
+      <div className="page-content">
+        <p>{application.company}</p>
+        <p>{application.position}</p>
+        <p>{application.status}</p>
+        <p>{application.salary}</p>
+        <p>{application.jobUrl}</p>
+        <p>{application.date}</p>
+      </div>
     </>
   );
 }
