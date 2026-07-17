@@ -17,7 +17,7 @@ import com.tertal.konpeito.service.ApplicationService;
 public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
-    ApplicationRepository repo;
+    private ApplicationRepository repo;
 
     @Override
     public List<ApplicationDto> getApplications(ApplicationFilterDto filter) {
@@ -73,5 +73,3 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
 }
-
-

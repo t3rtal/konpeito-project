@@ -24,4 +24,6 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
             @Param(value = "position") String positon,
             @Param(value = "status") Application.Status status);
 
+    Long  countByStatus(Application.Status status);
+
 }

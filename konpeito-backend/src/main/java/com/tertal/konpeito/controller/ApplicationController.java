@@ -26,7 +26,7 @@ import com.tertal.konpeito.service.ApplicationService;
 public class ApplicationController {
 
     @Autowired
-    ApplicationService service;
+    private ApplicationService service;
 
     @GetMapping
     public ResponseEntity<List<ApplicationDto>> getApplications(
