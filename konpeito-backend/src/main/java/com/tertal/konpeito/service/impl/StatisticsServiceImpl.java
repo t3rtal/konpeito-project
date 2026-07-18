@@ -1,6 +1,5 @@
 package com.tertal.konpeito.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tertal.konpeito.dto.StatisticsDto;
@@ -11,8 +10,11 @@ import com.tertal.konpeito.service.StatisticsService;
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
 
-    @Autowired
-    private ApplicationRepository repo;
+    private final ApplicationRepository repo;
+
+    public StatisticsServiceImpl(ApplicationRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
     public StatisticsDto getStatistics() {

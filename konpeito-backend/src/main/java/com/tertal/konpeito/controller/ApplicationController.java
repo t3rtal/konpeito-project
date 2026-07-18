@@ -2,7 +2,6 @@ package com.tertal.konpeito.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,8 +24,11 @@ import com.tertal.konpeito.service.ApplicationService;
 @RequestMapping("/api/applications")
 public class ApplicationController {
 
-    @Autowired
-    private ApplicationService service;
+    private final ApplicationService service;
+
+    public ApplicationController(ApplicationService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<ApplicationDto>> getApplications(

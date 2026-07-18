@@ -2,7 +2,6 @@ package com.tertal.konpeito.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tertal.konpeito.dto.ApplicationDto;
@@ -16,8 +15,11 @@ import com.tertal.konpeito.service.ApplicationService;
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
 
-    @Autowired
-    private ApplicationRepository repo;
+    private final ApplicationRepository repo;
+
+    public ApplicationServiceImpl(ApplicationRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
     public List<ApplicationDto> getApplications(ApplicationFilterDto filter) {
