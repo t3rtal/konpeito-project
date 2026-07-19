@@ -24,7 +24,7 @@ function InputForm({ setIsOpen, onSubmit }) {
           <InputField name={"status"} label={"status"} type={"text"} />
           <InputField name={"salary"} label={"salary"} type={"number"} />
           <InputField name={"jobUrl"} label={"job url"} type={"text"} />
-          <InputField name={"date"} label={"date"} type={"date"} />
+          <InputField name={"date"} label={"date"} type={"text"} />
           <button type="submit">Submit</button>
         </form>
       </div>
