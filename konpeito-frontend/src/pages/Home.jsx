@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ListItem from "../components/ListItem";
-import InputForm from "../components/InputForm";
-import Navbar from "../components/NavBar";
+import ListItem from "../components/ListItem/ListItem.jsx";
+import InputForm from "../components/InputForm/InputForm.jsx";
+import Navbar from "../components/Navbar/Navbar.jsx";
+import Statistics from "../components/Statistics/Statistics.jsx";
 
 function Home() {
   const [applications, setApplications] = useState([]);
@@ -38,8 +39,13 @@ function Home() {
     <>
       <Navbar />
       <div className="page-content">
-        <h1>Hi, Tertal!</h1>
-        <h2>Here is your list of applications</h2>
+        <div className="overview">
+          <div className="greeting">
+            <h1>Hi, Tertal!</h1>
+            <h2>Here is your list of applications</h2>
+          </div>
+          <Statistics />
+        </div>
         <button className="add-application" onClick={() => setIsOpen(true)}>add application</button>
         {isOpen && (
           <InputForm setIsOpen={setIsOpen} onSubmit={handleAddApplication} />

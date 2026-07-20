@@ -29,6 +29,18 @@ ul {
   align-self: flex-start;
 }
 
+.overview {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.greeting {
+  flex: 1 1 0;
+}
+
 .add-application {
   background: #d4f7d6;
   color: #1a5f23;

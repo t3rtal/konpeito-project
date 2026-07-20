@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./ListItem.css";
 
 function ListItem({ application, setServerResponse }) {
   const navigate = useNavigate();

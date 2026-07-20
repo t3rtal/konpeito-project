@@ -1,3 +1,5 @@
+import "./InputForm.css";
+
 function InputField({ name, label, type }) {
   return (
     <div>

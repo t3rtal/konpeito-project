@@ -1,0 +1,21 @@
+.statistics {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f3f8ff 0%, #e7f6ff 100%);
+  border: 1px solid #cfe7f9;
+  box-shadow: 0 4px 10px rgba(15, 76, 129, 0.08);
+  min-width: 180px;
+}
+
+.statistics h4 {
+  font-weight: 700;
+  color: #1f4d6e;
+  margin-bottom: 0.5rem;
+}
+
+.statistics p {
+  color: #3c647d;
+  margin-top: 0.2rem;
+}

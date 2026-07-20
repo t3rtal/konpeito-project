@@ -1,7 +1,3 @@
-@import './components/Navbar.css';
-@import './components/InputForm.css';
-@import './components/ListItem.css';
-
 :root {
 	--page-bg: #f5f7fb;
 	--text-color: #111827;

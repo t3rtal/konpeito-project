@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import InputForm from "../components/InputForm";
+import Navbar from "../components/Navbar/Navbar.jsx";
+import InputForm from "../components/InputForm/InputForm.jsx";
 
 function ApplicationDetails() {
   const { id } = useParams();
