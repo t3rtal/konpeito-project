@@ -2,6 +2,8 @@ package com.tertal.konpeito.controller;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,9 +34,10 @@ public class ApplicationController {
 
     @GetMapping
     public ResponseEntity<List<ApplicationDto>> getApplications(
-            @ModelAttribute ApplicationFilterDto filter
+            @ModelAttribute ApplicationFilterDto filter,
+            @PageableDefault(page = 0, size = 10) Pageable pageable
     ) {
-        List<ApplicationDto> applications = this.service.getApplications(filter);
+        List<ApplicationDto> applications = this.service.getApplications(filter, pageable);
         return ResponseEntity.ok(applications);
     }
 

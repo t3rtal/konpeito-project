@@ -2,6 +2,7 @@ package com.tertal.konpeito.service.impl;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.tertal.konpeito.dto.ApplicationDto;
@@ -22,9 +23,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<ApplicationDto> getApplications(ApplicationFilterDto filter) {
+    public List<ApplicationDto> getApplications(
+            ApplicationFilterDto filter, Pageable pageable
+    ) {
         List<Application> applications = this.repo.findApplications(
-                filter.getPosition(), filter.getStatus());
+                filter.getPosition(), filter.getStatus(), pageable).getContent();
 
         return applications.stream()
                 .map(ApplicationMapper::mapToApplicationDto)

@@ -1,7 +1,7 @@
 package com.tertal.konpeito.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,9 +20,10 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
         AND
         (:position IS NULL or a.position = :position)
     """)
-    List<Application> findApplications(
+    Page<Application> findApplications(
             @Param(value = "position") String positon,
-            @Param(value = "status") Application.Status status);
+            @Param(value = "status") Application.Status status,
+            Pageable pageable);
 
     Long  countByStatus(Application.Status status);
 
