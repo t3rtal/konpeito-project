@@ -15,12 +15,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.tertal.konpeito.config.TenantFilter;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
     @Autowired
     private JwtFilter jwtFilter;
+
+    @Autowired
+    private TenantFilter tenantFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -33,7 +38,8 @@ public class SecurityConfiguration {
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(this.jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(this.jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(this.tenantFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

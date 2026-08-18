@@ -1,4 +1,4 @@
-package com.tertal.konpeito.service.impl;
+package com.tertal.konpeito.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
