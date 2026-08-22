@@ -44,9 +44,13 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public ApplicationDto getApplication(Long applicationId) {
-        Application application = this.applicationRepository.findById(applicationId).orElseThrow(
-                () -> new ResourceNotFoundException("There is no application with id: " + applicationId)
-        );
+        Long userId = TenantContext.getCurrentTenant();
+        Application application = this.applicationRepository
+                .findByIdAndUserId(applicationId, userId)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException(
+                                "There is no application with id: " + applicationId)
+                );
         return ApplicationMapper.mapToApplicationDto(application);
     }
 
@@ -69,7 +73,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     public ApplicationDto updateApplication(
             Long applicationId, ApplicationDto applicationDto
     ) {
-        Application application = this.applicationRepository.findById(applicationId)
+        Long userId = TenantContext.getCurrentTenant();
+        Application application = this.applicationRepository
+                .findByIdAndUserId(applicationId, userId)
                 .orElseThrow(() -> new ResourceNotFoundException("There is no application with id: " + applicationId));
 
         application.setCompany(applicationDto.getCompany());
